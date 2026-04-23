@@ -7,42 +7,42 @@ import anthropic
 _async_client = anthropic.AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 _SYSTEM_PROMPT = """\
-Je bent een CRM-assistent die salesteams helpt bij het voorbereiden van nieuwe deals.
-Je analyseert historische HubSpot-data en maakt een beknopte, bruikbare samenvatting voor sales.
-Schrijf in het Nederlands. Wees concreet, bondig en to-the-point.
-Gebruik geen vage formuleringen — noem specifieke namen, bedragen, datums en pijnpunten als die beschikbaar zijn."""
+You are a CRM assistant that helps sales teams prepare for new deals.
+You analyze historical HubSpot data and produce concise, actionable summaries for sales.
+Write in English. Be concrete, brief and to the point.
+Avoid vague statements — mention specific names, amounts, dates and pain points when available."""
 
 _USER_TEMPLATE = """\
-Analyseer de onderstaande HubSpot-data en schrijf een samenvatting die nuttig is wanneer we \
-een nieuwe deal starten met dit bedrijf of deze contactpersonen.
+Analyze the HubSpot data below and write a summary that is useful when starting a new deal \
+with this company or these contacts.
 
-Focus op de volgende punten (sla een punt over als er geen relevante data voor is):
+Cover the following points (skip a point if there is no relevant data):
 
-## 1. Pijnpunten & uitdagingen
-Welke problemen of frustraties zijn er eerder ter sprake gekomen?
+## 1. Pain points & challenges
+What problems or frustrations have come up before?
 
-## 2. Verlangens & doelen
-Wat willen ze bereiken? Welke resultaten zoeken ze?
+## 2. Desires & goals
+What do they want to achieve? What results are they looking for?
 
-## 3. Besluitvorming & bezwaren
-Wie zijn de beslissers? Welke bezwaren of blokkades zijn er eerder geweest?
+## 3. Decision making & objections
+Who are the decision makers? What objections or blockers have come up before?
 
-## 4. Dealgeschiedenis
-Eerder gewonnen/verloren deals, aangeboden bedragen, redenen.
+## 4. Deal history
+Previously won/lost deals, amounts offered, reasons.
 
-## 5. Communicatiestijl
-Hoe communiceren ze? Wat werkte wel of niet in eerdere contacten?
+## 5. Communication style
+How do they communicate? What worked or didn't work in previous interactions?
 
-## 6. Aandachtspunten voor het volgende gesprek
-Cruciale context om te kennen vóór een nieuw gesprek.
+## 6. Key talking points for the next conversation
+Critical context to know before a new conversation.
 
 --- HubSpot data ---
 
 {context}
 
---- Einde data ---
+--- End of data ---
 
-Geef een gestructureerde samenvatting van maximaal 500 woorden."""
+Provide a structured summary of no more than 500 words."""
 
 
 def _format_timestamp(ts_ms: Optional[int]) -> str:
