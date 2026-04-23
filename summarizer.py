@@ -20,7 +20,8 @@ Follow these formatting rules strictly:
 - Place a blank line between the section title and its bullet points.
 - Place a blank line after the last bullet point of a section, before the next section title.
 - Write in a professional and concise manner.
-- Do not include any additional text outside this structure."""
+- Do not include any additional text outside this structure.
+- When mentioning dates, use the North American format: Month DD, YYYY (e.g., January 15, 2024)."""
 
 _USER_TEMPLATE = """\
 Analyze the HubSpot data below and write a summary that is useful when starting a new deal \
